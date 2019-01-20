@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <!--My simple Rock Paper Scissors App-->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,57 +8,41 @@
         <title>Rock|Paper|Scissors</title>
     </head>
     <body>
-    <script>
+        <script>
+        // Base Score
+        let playerScore = 0;
+        let compScore = 0;
+
+        // Random Computer Choice
         function computerPlay(){
-            //Random number generation
             let compNum = Math.floor(Math.random() * 3);
-
-            //Choices
-            const choice = ["Rock", "Paper", "Scissors"]
-            return choice[compNum];
+            const compPick = ["Rock", "Paper", "Scissors"];
+            return compPick[compNum];
         }
-
-
+        
         function game(){
-            //Starting Score
-            let playerScore = 0;
-            let compScore = 0;
-
-            while(playerScore < 5 || compScore < 5){
+            while(playerScore < 5 && compScore < 5){
                 let playerChoice = prompt("Please enter Rock, Paper, or Scissors.").toLowerCase();
                 let playerSelection = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
-                let computerSelection = computerPlay();
-                if(playerSelection === "Rock" || playerSelection === "Scissors" || playerSelection === "Paper"){
-                    if((playerSelection === "Rock" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection ==="Paper") || (playerSelection === "Paper"  && computerSelection === "Rock"))
+                let compSelection = computerPlay();
+                if((playerSelection === "Rock" && compSelection === "Scissors" ) || (playerSelection === "Scissors" && compSelection === "Paper") || (playerSelection === "Paper" && compSelection === "Rock")){
                     playerScore++;
-                    console.log("You win. " +playerSelection+ " beats " +computerSelection);
-                }
-
-                else if((playerSelection === "Paper" && computerSelection === "Scissors") || (playerSelection === "Scissors" && computerSelection === "Rock") || (playerSelection === "Rock" && computerSelection === "Paper")){
+                    console.log("You win this round! Current score is: You-" +playerScore+ ", Computer-" +compScore);
+                }else if((playerSelection === "Rock" && compSelection === "Paper") || (playerSelection === "Paper" && compSelection === "Scissors") || (playerSelection === "Scissors" && compSelection === "Rock")){
                     compScore++;
-                    console.log("You lost. " +computerSelection+ " beats " +playerSelection);
+                    console.log("You lost this round. Current score is: You-" +playerScore+ ", Computer-" +compScore);
+                }else if(playerSelection === compSelection){
+                    console.log("It's a tie!")
+                }else{
+                    console.log("Unknown entry. Please enter Rock, Paper, or Scissors.");
                 }
-
-                else if(playerSelection === computerSelection){
-                    console.log(playerSelection+ " is the same as " +computerSelection+ " so, it's a Draw! Please try again.");
-                }
-
-                if(playerScore < 5 && compScore < 5){
-                    console.log("Your current score is " +playerScore+ ", and the computers current score is " +compscore);
-                }
-            else {
-                console.log("Incorrect selection. Please enter Rock, Paper, or Scissors.")
             }
-            }
-
-            console.log("Game over. The final score is: You " +playerScore+ " || Computer " +compScore);
             if(playerScore > compScore){
-                console.log("Congratulations! You are the Winner!!");
-            }
-            else {
-                console.log("You lost. Better luck next time.")
+                console.log("Congratulations!! You win!! Final score is: You-" +playerScore+ ", Computer-" +compScore);
+            }else{
+                console.log("Sorry, you lost. Final score is: You-" +playerScore+ ", Computer-" +compScore);
             }
         }
-    </script>
+        </script>
     </body>
 </html>
