@@ -1,0 +1,49 @@
+body{
+    text-align: center;
+}
+
+.container{
+    padding: 0;
+    margin-left: 400px;
+    height: 400px;
+    width: 400px;
+    /*text-align: center;*/
+    background-color: skyblue;
+}
+
+.heading{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+}
+
+.score{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 35px;
+}
+
+.buttons{
+    border: none;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 30%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#restart-btn{
+    display: grid;
+    width: 390px;
+    height: 40px;
+    margin-top: 5px;
+    border: none;
+    background-color: rgb(119, 31, 31);
+    color: whitesmoke;
+}
+
+.choice{
+    width: 30%;
+    height: 30px;
+}
+
+
+
